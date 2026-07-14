@@ -1,9 +1,11 @@
 import argparse
 import os
+import json
 import numpy as np
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
+import matplotlib.pyplot as plt
 from env import SafeNavigationEnv
 from agent import ActorNetwork, CriticNetwork, ReplayBuffer
 from lagrangian import LagrangianMultiplier
@@ -45,6 +47,7 @@ def train(args):
 
     reward_history = []
     cost_history = []
+    lambda_history = []
     total_steps = 0
 
     for episode in range(1, args.episodes + 1):
@@ -125,8 +128,9 @@ def train(args):
             for p, tp in zip(critic.parameters(), target_critic.parameters()):
                 tp.data.copy_(args.tau * p.data + (1.0 - args.tau) * tp.data)
 
-        reward_history.append(episode_reward)
-        cost_history.append(episode_cost)
+        reward_history.append(float(episode_reward))
+        cost_history.append(float(episode_cost))
+        lambda_history.append(float(lagrangian.value))
 
         # Update Lagrangian multiplier
         if episode >= args.warmup_episodes:
@@ -140,6 +144,48 @@ def train(args):
     print(f"\nTraining Complete! Saving actor weights to: {args.save_path}")
     os.makedirs(os.path.dirname(args.save_path), exist_ok=True)
     torch.save(actor.state_dict(), args.save_path)
+
+    # Save training history data to JSON
+    history = {
+        "rewards": reward_history,
+        "costs": cost_history,
+        "lambdas": lambda_history
+    }
+    history_path = os.path.join(os.path.dirname(args.save_path), "training_history.json")
+    with open(history_path, "w") as f:
+        json.dump(history, f, indent=2)
+    print(f"Training metrics history saved to: {history_path}")
+
+    # Generate and save performance curve plots
+    plt.figure(figsize=(12, 4))
+    
+    plt.subplot(1, 3, 1)
+    plt.plot(reward_history, color='g')
+    plt.title("Cumulative Reward")
+    plt.xlabel("Episode")
+    plt.ylabel("Reward")
+    
+    plt.subplot(1, 3, 2)
+    plt.plot(cost_history, color='r')
+    plt.axhline(y=args.cost_limit, color='b', linestyle='--', label=f'Limit ({args.cost_limit})')
+    plt.title("Cumulative Cost")
+    plt.xlabel("Episode")
+    plt.ylabel("Cost")
+    plt.legend()
+    
+    plt.subplot(1, 3, 3)
+    plt.plot(lambda_history, color='purple')
+    plt.title("Lagrangian Lambda Evolution")
+    plt.xlabel("Episode")
+    plt.ylabel("Lambda")
+    
+    plt.tight_layout()
+    plot_path = os.path.join(os.path.dirname(args.save_path), "..", "assets", "training_performance.png")
+    plot_path = os.path.abspath(plot_path)
+    os.makedirs(os.path.dirname(plot_path), exist_ok=True)
+    plt.savefig(plot_path, dpi=150)
+    print(f"Training performance curves exported to: {plot_path}")
+    plt.close()
 
 if __name__ == "__main__":
     train(parse_args())

@@ -19,6 +19,7 @@ venv/
 # Local Model Checkpoints & temporary runs
 models/baseline/
 models/trajectories.json
+models/training_history.json
 runs/
 tensorboard/
 .pytest_cache/
@@ -28,3 +29,5 @@ src/_env1.py
 src/_env2.py
 src/_train2.py
 src/utils.py
+src/recover_plot.py
+training_terminal.log
