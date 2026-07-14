@@ -1,0 +1,30 @@
+# Python bytecode/cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+safe_rl_env/
+env/
+venv/
+.env/
+
+# IDE/System files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+
+# Local Model Checkpoints & temporary runs
+models/baseline/
+models/trajectories.json
+runs/
+tensorboard/
+.pytest_cache/
+
+# Deprecated/Temporary files (kept locally but excluded from Git)
+src/_env1.py
+src/_env2.py
+src/_train2.py
+src/utils.py

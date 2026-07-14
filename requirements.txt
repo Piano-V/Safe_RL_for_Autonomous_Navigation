@@ -1,0 +1,5 @@
+gymnasium[pygame]==1.0.0
+torch
+numpy
+matplotlib
+tensorboard
