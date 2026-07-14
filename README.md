@@ -155,22 +155,22 @@ The table below highlights performance metrics averaged over $100$ random evalua
 
 | Policy Model | Success Rate (%) | Collision Rate (%) | Avg Episode Reward | Avg Episode Safety Cost |
 | :--- | :---: | :---: | :---: | :---: |
-| **Constrained SAC (Lagrangian)** | **93.0%** | **6.0%** | **1388.97** | **1.43** |
-| Unconstrained SAC (Static Beta) | 55.0% | 44.0% | 947.11 | 6.91 |
+| **Constrained SAC (Lagrangian)** | **94.0%** | **6.0%** | **1435.76** | **1.63** |
+| Unconstrained SAC (Static Beta) | 56.0% | 41.0% | 919.57 | 7.02 |
 
-*Note: The Constrained SAC policy reduces the collision rate by **86.4%** compared to the unconstrained baseline, while simultaneously increasing the target success rate from 55.0% to 93.0%. This highlights the effectiveness of dynamic safety constraints over static penalty parameters.*
+*Note: The Constrained SAC policy reduces the collision rate by **85.4%** compared to the unconstrained baseline (6.0% vs. 41.0%), while simultaneously increasing the target success rate from 56.0% to 94.0%. This highlights the effectiveness of dynamic safety constraints over static penalty parameters.*
 
 ### 4. Zero-Shot Generalization Performance
 To test spatial scale-invariance and robustness to increased crowding, the agent was evaluated directly in the **Large Sandbox** environment ($800\times800\text{px}$ map with $8$ dynamic obstacles) without any retraining:
 
 | Metric | Evaluation Value |
 | :--- | :---: |
-| **Success Rate** | **65.0%** |
-| **Collision Rate** | **35.0%** |
-| **Average Episode Reward** | **1408.86** |
-| **Average Episode Safety Cost** | **6.67** |
+| **Success Rate** | **69.0%** |
+| **Collision Rate** | **30.0%** |
+| **Average Episode Reward** | **1476.25** |
+| **Average Episode Safety Cost** | **6.13** |
 
-*Note: Navigating a $1.77\times$ larger area populated with $2\times$ more dynamic obstacles presents significantly higher difficulty. Achieving a 65.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
+*Note: Navigating a $1.77\times$ larger area populated with $2\times$ more dynamic obstacles presents significantly higher difficulty. Achieving a 69.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
 
 
 
