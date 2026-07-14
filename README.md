@@ -9,17 +9,19 @@ An implementation of an autonomous agent navigating dynamic environments under s
 
 ---
 
-## 📽️ Agent Demonstration
+## Agent Demonstration
 
-Below is the agent demonstrating its navigation capabilities in the obstacle-filled environment. 
 
-*(To display your custom video or GIF here, follow the [Showcase Guide](#-showcase-guide) below).*
+https://github.com/user-attachments/assets/48323e6a-70ce-4fe4-958e-f65667528361
 
-![Safe Navigation Demo](assets/safe_navigation_demo.gif)
+
+
+
+
 
 ---
 
-## 🎯 Project Overview
+## Project Overview
 
 In autonomous navigation, standard Reinforcement Learning (RL) agents often optimize only for speed and goal attainment, resulting in high collision rates during exploration. This project models navigation as a **Constrained Markov Decision Process (CMDP)**:
 
@@ -38,7 +40,7 @@ Where:
 
 ---
 
-## 📁 Repository Directory Structure
+##  Repository Directory Structure
 
 ```
 .
@@ -67,7 +69,7 @@ Where:
 
 ---
 
-## 🚀 Quick Start & Installation
+## Quick Start & Installation
 
 ### 1. Setup Virtual Environment
 ```bash
@@ -93,7 +95,7 @@ python3 src/verify_pipeline.py
 
 ---
 
-## 💻 Usage & CLI Guide
+## Usage & CLI Guide
 
 All scripts are equipped with Command-Line Interfaces (CLIs) for configurable execution.
 
@@ -138,7 +140,7 @@ python3 src/train_unconstrained.py --episodes 1200
 
 ---
 
-## 📊 Performance Visualizations
+## Performance Visualizations
 
 ### 1. Training Curves
 The plots show the convergence of cumulative rewards and the stabilization of safety costs as the Lagrangian multiplier $\lambda$ dynamically balances performance and safety.
@@ -161,7 +163,7 @@ The table below highlights performance metrics averaged over $100$ random evalua
 *Note: The Constrained SAC policy reduces the collision rate by **85.4%** compared to the unconstrained baseline (6.0% vs. 41.0%), while simultaneously increasing the target success rate from 56.0% to 94.0%. This highlights the effectiveness of dynamic safety constraints over static penalty parameters.*
 
 ### 4. Zero-Shot Generalization Performance
-To test spatial scale-invariance and robustness to increased crowding, the agent was evaluated directly in the **Large Sandbox** environment ($800\times800\text{px}$ map with $8$ dynamic obstacles) without any retraining:
+To test spatial scale-invariance and robustness to increased crowding, the agent was evaluated directly in the **Large Sandbox** environment (800 x 800 px map with 8 dynamic obstacles) without any retraining:
 
 | Metric | Evaluation Value |
 | :--- | :---: |
@@ -170,38 +172,9 @@ To test spatial scale-invariance and robustness to increased crowding, the agent
 | **Average Episode Reward** | **1476.25** |
 | **Average Episode Safety Cost** | **6.13** |
 
-*Note: Navigating a $1.77\times$ larger area populated with $2\times$ more dynamic obstacles presents significantly higher difficulty. Achieving a 69.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
-
-
+*Note: Navigating a $1.77\times$ larger area populated with 2 times more dynamic obstacles presents significantly higher difficulty. Achieving a 69.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
 
 ---
 
-## 📹 Showcase Guide: Adding Your Video to GitHub
-
-To showcase your 1-minute video demonstration on GitHub, you can use one of these two methods:
-
-### Method A: High-Quality GIF/WebP (Recommended for Autoplay)
-GIF and WebP formats loop automatically in a repository README.
-1. Convert your `.mp4` video into an optimized `.gif` or `.webp` file using `ffmpeg`:
-   ```bash
-   # Convert to GIF (optimized using lanczos filter, 15 FPS, 500px width)
-   ffmpeg -i input_video.mp4 -vf "fps=15,scale=500:-1:flags=lanczos" -loop 0 assets/safe_navigation_demo.gif
-   ```
-2. Replace `assets/safe_navigation_demo.gif` in the repository with your newly generated file.
-3. Commit and push the file to GitHub.
-
-### Method B: Direct MP4 Video Player Embed (Premium HTML5 Player)
-GitHub supports native `<video>` tag embedding.
-1. Open your repository page on GitHub.com.
-2. Edit your `README.md` file using the web editor.
-3. **Drag and drop** your `.mp4` video file directly into the editor pane.
-4. GitHub will upload the video file to its asset server and insert code similar to this:
-   ```html
-   <video src="https://github.com/user-attachments/assets/xyz-123" controls="controls" style="max-width: 100%;"></video>
-   ```
-5. Copy that code and replace the `![Safe Navigation Demo](assets/safe_navigation_demo.gif)` line with it.
-
----
-
-## 📝 License
+## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
