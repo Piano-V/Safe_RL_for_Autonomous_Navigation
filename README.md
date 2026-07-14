@@ -176,6 +176,14 @@ To test spatial scale-invariance and robustness to increased crowding, the agent
 
 *Note: Navigating a $1.77\times$ larger area populated with 2 times more dynamic obstacles presents significantly higher difficulty. Achieving a 69.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
 
+Zero Shot Demonstration:
+
+
+
+https://github.com/user-attachments/assets/3d73da24-e3f1-41aa-9642-16d02462fdc9
+
+
+
 ---
 
 ## License
