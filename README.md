@@ -12,7 +12,9 @@ An implementation of an autonomous agent navigating dynamic environments under s
 ## Agent Demonstration
 
 
-https://github.com/user-attachments/assets/48323e6a-70ce-4fe4-958e-f65667528361
+
+
+https://github.com/user-attachments/assets/df54bc77-c6c8-4165-8a8a-9a30196e561b
 
 
 
