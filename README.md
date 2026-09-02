@@ -174,7 +174,7 @@ To test spatial scale-invariance and robustness to increased crowding, the agent
 | **Average Episode Reward** | **1476.25** |
 | **Average Episode Safety Cost** | **6.13** |
 
-*Note: Navigating a $1.77\times$ larger area populated with 2 times more dynamic obstacles presents significantly higher difficulty. Achieving a 69.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
+*Note: Navigating a 1.77 times larger area populated with 2 times more dynamic obstacles presents significantly higher difficulty. Achieving a 69.0% success rate in a zero-shot setting demonstrates the policy's spatial generalization and lidar-based obstacle avoidance robustness.*
 
 Zero Shot Demonstration:
 
